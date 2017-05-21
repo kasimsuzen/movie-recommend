@@ -1,0 +1,24 @@
+NOTES_TO_SELF
+
+* User gibi model/view/controller/db table vs. olusturmak istedigin seyleri rails scaffold ile yap hepsini olusturuyor.
+	rails generate scaffold User name:string user_type:string
+
+* Tablo isminde "type" olmasin reserved wordmus User tablosunu tanimlarken sikinti cikmisti. Bu yuzden "user_type" yaptim.
+
+* db/ klasoru altindaki seyleri git-commit ettikten sonra dokunmamaya calis. Cunku "rails db:migrate" calistirdigin zaman butun migration scriptler sirasiyla calistiriliyor. Eger bir makinada fark varsa orada patlar.
+
+* Mesela tabloya bir kolon eklemeyi unuttuysan su sekilde ekle:
+	rails generate migration add_fieldname_to_tablename fieldname:fieldtype
+
+* Migrationlari calistirmak:
+	rails db:migrate
+
+* db'de problem cikarsa sirasiyla sil/olustur/migrate
+	rails db:drop
+	rails db:create
+	rails db:migrate
+
+* Field typelar sunlar: http://overooped.com/post/100354794/ruby-scriptgenerate-scaffold-types
+
+* Ruby'de instance variablelar basinda @ ile gosterilir. @user_type gibi. Instance variablelar viewlar tarafindan kullanilabilir.
+* Ruby'de class variablelar (static) @@ ile gosterilir
