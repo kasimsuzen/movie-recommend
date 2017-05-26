@@ -1,6 +1,5 @@
 class MoviesController < ApplicationController
   before_action :set_movie, only: [:show, :edit, :update, :destroy]
-
   # GET /movies
   # GET /movies.json
   def index
@@ -17,7 +16,9 @@ class MoviesController < ApplicationController
   #   @movies = Movie.all
   # end
 
-  
+  def all
+    @movies = Movie.all
+  end
 
   # GET /movies/1
   # GET /movies/1.json
@@ -31,6 +32,10 @@ class MoviesController < ApplicationController
 
   # GET /movies/1/edit
   def edit
+    unless is_admin?
+      redirect_to request.referrer
+    end
+      
   end
 
   # POST /movies
@@ -52,6 +57,10 @@ class MoviesController < ApplicationController
   # PATCH/PUT /movies/1
   # PATCH/PUT /movies/1.json
   def update
+    unless is_admin?
+      redirect_to request.referrer
+    end
+    
     respond_to do |format|
       if @movie.update(movie_params)
         format.html { redirect_to @movie, notice: 'Movie was successfully updated.' }
@@ -66,6 +75,10 @@ class MoviesController < ApplicationController
   # DELETE /movies/1
   # DELETE /movies/1.json
   def destroy
+    unless is_admin?
+      redirect_to request.referrer
+    end
+    
     @movie.destroy
     respond_to do |format|
       format.html { redirect_to movies_url, notice: 'Movie was successfully destroyed.' }
