@@ -7,7 +7,8 @@
     <tr>
       <th>Name</th>
       <th>Year</th>
-      <th>Imdb rating</th>
+      <th>Image</th>
+      <th>Summary</th>
       <th>Genres</th>
       <th colspan="3"></th>
     </tr>
@@ -18,7 +19,8 @@
       <tr>
         <td><%= movie.name %></td>
         <td><%= movie.year %></td>
-        <td><%= movie.imdb_rating %></td>
+        <td><%= image_tag(movie.image_url, size: 200) %></td>
+        <td><%= movie.summary %></td>
         <td><%= movie.genres %></td>
         <td><%= link_to 'Show', movie %></td>
         <td><%= link_to 'Edit', edit_movie_path(movie) %></td>

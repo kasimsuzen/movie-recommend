@@ -11,17 +11,14 @@ require 'csv'
 csv_text = File.read('/home/ubuntu/workspace/db/movies.csv')
 csv = CSV.parse(csv_text, :headers => true, :encoding => 'ISO-8859-1')
 csv.each do |row|
-  t = Movie.new
-  t.id = row['id']
-  t.name = row['name']
-  t.year = row['year']
-  t.summary = row['summary']
-  t.image_url = row['image_url']
-  t.genres = row['genres']
-  t.created_at = Time.now
-  t.updated_at = Time.now
-  t.save
-  puts "#{t} saved"
-end
 
-puts "There are now #{Movie.count} rows in the transactions table"
+    puts row.inspect    
+    # puts "id", row['id']
+    # puts "name", row['name']
+    # puts "year", row['year']
+    # puts "summary", row['summary']
+    # puts "image_url", row['image_url']
+    # puts "genres", row['genres']
+
+    puts "======================================"
+end

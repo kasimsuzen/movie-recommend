@@ -5,7 +5,19 @@ class MoviesController < ApplicationController
   # GET /movies.json
   def index
     @movies = Movie.all
+    if params[:search]
+      @movies = Movie.search(params[:search]).order("created_at DESC")
+    else
+      @movies = Movie.all.order('created_at DESC')
+    end
   end
+
+  # OLD INDEX
+  # def index
+  #   @movies = Movie.all
+  # end
+
+  
 
   # GET /movies/1
   # GET /movies/1.json

@@ -18,17 +18,23 @@
 
   <div class="field">
     <%= f.label :year %>
-    <%= f.date_select :year %>
-  </div>
-
-  <div class="field">
-    <%= f.label :imdb_rating %>
-    <%= f.text_field :imdb_rating %>
+    <!--<%= f.date_select :year %>-->
+    <%= f.select :year, (Time.now.year).downto(Time.now.year - 200).to_a %>
   </div>
 
   <div class="field">
     <%= f.label :genres %>
     <%= f.text_field :genres %>
+  </div>
+  
+  <div class="field">
+    <%= f.label :summary %>
+    <%= f.text_area :summary %>
+  </div>
+
+  <div class="field">
+    <%= f.label :image_url %>
+    <%= f.text_field :image_url %>
   </div>
 
   <div class="actions">

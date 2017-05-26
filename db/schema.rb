@@ -10,15 +10,36 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170522003205) do
+ActiveRecord::Schema.define(version: 20170526073009) do
+
+  create_table "comments", force: :cascade do |t|
+    t.integer  "movie_id"
+    t.integer  "user_id"
+    t.string   "comment"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["movie_id"], name: "index_comments_on_movie_id"
+    t.index ["user_id"], name: "index_comments_on_user_id"
+  end
 
   create_table "movies", force: :cascade do |t|
     t.string   "name"
     t.date     "year"
-    t.float    "imdb_rating"
     t.string   "genres"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string   "summary"
+    t.string   "image_url"
+  end
+
+  create_table "ratings", force: :cascade do |t|
+    t.integer  "movie_id"
+    t.integer  "user_id"
+    t.float    "rating"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["movie_id"], name: "index_ratings_on_movie_id"
+    t.index ["user_id"], name: "index_ratings_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
